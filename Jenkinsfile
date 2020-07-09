@@ -36,5 +36,15 @@ pipeline {
                 }
             }
         }
+        stage('Functional Test') {
+            steps {
+                // Create a new dir
+                dir('functional-test') {
+                    // It's needed download the API Test Project
+                    git credentialsId: 'github_login', url: 'https://github.com/dantovsky/tasks-functional-tests'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
