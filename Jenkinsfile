@@ -48,7 +48,7 @@ pipeline {
         }
         stage('Deploy Prod') {
             steps {
-                sh 'docker-compose build' // generate images
+                sh 'docker-compose build' // generate docker images
                 sh 'docker-compose up -d' // run docker (-d means do not freeze console)
             }
         }
