@@ -19,8 +19,10 @@ pipeline {
         stage('API Test') {
             steps {
                 // It's needed download the API Test Project
-                git credentialsId: 'github_login', url: 'https://github.com/dantovsky/tasks-api-test'
-                sh 'mvn test'
+                dir('api-test') {
+                    git credentialsId: 'github_login', url: 'https://github.com/dantovsky/tasks-api-test'
+                    sh 'mvn test'
+                }
             }
         }
     }
