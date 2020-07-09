@@ -23,6 +23,7 @@ pipeline {
         }
         stage('Quality Gate') {
             steps {
+                sleep(5) // serve para dar tempo do Quality Gate obter uma respostar para depois seugir.
                 timeout(time: 1, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true // se o Quality Gate falhar o pipeline vai ser parado
                 }
